@@ -37,7 +37,7 @@ Before the class, please install the following:
 
 
 ## Post-Class Survey
-If you have taken the live webinar for this class, please take this survey: [Creating Reproducible Documents in Quarto Survey](bit.ly/quarto-survey)
+If you have taken the live webinar for this class, please take this survey: [Creating Reproducible Documents with Quarto Survey](bit.ly/quarto-survey)
 
 
 ## License and Terms of Use
@@ -50,4 +50,4 @@ The images, external resources, and cheatsheets linked in this repository may ha
 
 ## Citation
 Please cite this material as:    
-Johns Hopkins University Data Services. November 12, 2024. Creating Reproducible Documents in Quarto Survey. https://github.com/jhu-data-services/reproducible-documents-quarto 
+Johns Hopkins University Data Services. November 12, 2024. Creating Reproducible Documents with Quarto. https://github.com/jhu-data-services/reproducible-documents-quarto 
