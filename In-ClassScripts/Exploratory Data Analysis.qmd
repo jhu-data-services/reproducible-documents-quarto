@@ -1,0 +1,83 @@
+---
+title: "Exploratory Data Analysis"
+author: "Lubov McKone"
+format: 
+  revealjs:
+    chalkboard: true
+editor: visual
+toc: true
+bibliography: references.bib
+execute: 
+  warning: false
+code-annotations: hover
+---
+
+## Introduction
+
+```{r}
+#| include: false
+
+library(medicaldata)
+library(dplyr)
+library(ggplot2)
+library(reticulate)
+
+scurvy <- medicaldata::scurvy 
+```
+
+This is a notebook for the Scurvy Lab at JHU to share code and results. The Scurvy Lab studies the efficacy of different nutrients on treating scurvy. Data for this study comes from [@lindst1953]. Data was collected from `{r} unique(scurvy$study_id)` participants.
+
+## Data Processing
+
+This is where we will process our data for analysis.
+
+```{r}
+#| code-fold: true
+#| echo: true
+
+
+scurvy_processed <- scurvy |>
+  mutate_at(c(4:8), # <1>
+            ~as.numeric(substr(., start = 1, stop = 1))) # <2>
+```
+
+1.  For columns that represent severity of symptoms on day 6
+2.  Extract only the first character, and convert to numeric
+
+## Exploratory Data Analysis
+
+This is where we will explore our data.
+
+::: panel-tabset
+## Gum Rot
+
+```{r}
+#| label: fig-gum-rot
+
+
+scurvy_processed |>
+  group_by(treatment) |>
+  summarise(gum_rot_severity = mean(gum_rot_d6)) |>
+  ggplot() +
+  geom_col(aes(treatment, gum_rot_severity))
+```
+
+## Skin Sores
+
+```{python}
+#| label: fig-skin-sore
+
+scurvy_processed = r.scurvy_processed
+
+scurvy_processed.groupby('treatment').skin_sores_d6.mean().plot(kind = "bar")
+
+```
+
+## Knee Weakness
+
+## Lassitude
+:::
+
+## Discussion
+
+As seen in @fig-gum-rot and @fig-skin-sore, citrus is the best treatment for scurvy.
